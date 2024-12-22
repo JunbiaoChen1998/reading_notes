@@ -1,4 +1,54 @@
 A recent econometric literature shows two distinct paths for identification with shift-share instruments, 
-leveraging either many exogenous shifts or exogenous shares. 
-\cite{Borusyak:2024} presents the core logic of both paths and practical takeaways.
+leveraging either many exogenous shifts \citep{Borusyak:2022, Adao:2019} 
+or exogenous shares \citep{Goldsmith-Pinkham:2020}. 
 
+This paper presents the core logic of both paths and practical takeaways.
+
+
+\subsection{ADH (2003)'s SSIV}
+The influential China shock paper by ADH 
+constructs an instrumental variable with a shift-share structure:
+\begin{equation}
+    \text{SSIV}_{i} = \sum_{k} \text{emp share}_{i,k} \times \text{avg. of growth in Chinese import among non-US countries}_{k}
+\end{equation}
+where $k$ denotes industry and $j$ denotes commuting zone.
+
+\subsection{Definition of SSIV}
+A shift-share structure follows
+\begin{equation}
+    z_i = \sum_{k=1}^K \underbrace{s_{ik}}_{\text{Share}} 
+        \underbrace{g_k}_{\text{Shift}}
+\end{equation}
+\paragraph{Remarks}
+\begin{itemize}
+    \item Shifts vary at a different level (e.g.~industries) than the unit of analysis (e.g.~local labor markets).
+    \item Shares vary across units but are usually predetermined (e.g., employment shares are measured in a pre-period).
+    \item To argue convincingly that SSIV are exogenous, 
+    one must explain what properties of the shifts and shares make $z_i$ uncorrelated with $\epsilon_i$ 
+    (rather than simply stating $\text{Cov}[z_i, \epsilon_i]$ = 0).
+    \item $\sum_{k=1}^K s_{ik}$ is generally one. For incomplete share see Section~\ref{sec:ssiv_incomplete_share}.
+\end{itemize}
+
+One strategy to ensure that the shift-share instrument $z_i$ is exogenous is to have exogenous shift $g_k$.
+The key threat to identification in the exogenous shifts approach is the violation of the following condition:
+\textbf{
+    $g_k$ should be uncorrelated with an average of $\epsilon_i$ taken across units with weights $s_{ik}$.
+}
+
+\subsection{Incomplete Shift Share}
+\label{sec:ssiv_incomplete_share}
+In shift-share designs where the exposure shares $s_{i,k}$ do not add up to one,
+a special control must by included: the sum of shares, $S_i = \sum_{k} s_{i,k}$.
+This control remedies the bias arising from the correlation between $S_i$ and the error.
+
+\subsection{A Checklist for the Shift-Based Approach}
+\begin{enumerate}
+    \item Thinking about what endogeneity bias is being addressed.
+    \item Bridge the gap between the observed and ideal shifts. 
+    Control for $\sum_{k} s_{ik} q_k$: shift-share aggregates of the industry-level confounders
+    \item Include the ``incomplete share" control.
+    \item Lag shares to the beginning of the natural experiment.
+    \item Report descriptive statistics for shifts, such as mean and std.~of $z_i$ and $g_k$.
+    \item Implement balance tests for shifts in addition to the instrument.
+    \item Use correct standard errors.
+\end{enumerate}
