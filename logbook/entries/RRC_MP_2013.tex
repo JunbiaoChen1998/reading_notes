@@ -1,0 +1,85 @@
+\paragraph{Motivation}
+The existing literature on the gains from inter-country interactions studies 
+\textbf{trade in goods}, and \textbf{MP/FDI} in isolation.
+The omission of combining these two interactions in analysis is important because 
+trade agreements often combine tariff reductions and removal of barriers to MP.
+
+\paragraph{Some Notations}
+\begin{table}[h]
+    \caption{Notations in \citep{Ramondo:2013}}
+        \centering
+        \begin{tabular}{c l} \toprule
+            Notation & Meaning \\ \hline
+            $i = \{1, 2, 3, \cdots, I\}$ & country of headquarter (parent) \\
+            $l = \{1, 2, 3, \cdots, I\}$ & country of production \\
+            $n = \{1, 2, 3, \cdots, I\}$ & country of destination \\
+            $d_{nl} \geq 1$ & trade costs \\
+            $h_{li}^g \geq 1$ & MP costs \\
+            $v \in [0, 1]$ & tradable intermediate goods \\
+            $u \in [0, 1]$ & non-tradable final goods \\ 
+            \bottomrule
+        \end{tabular}
+        \begin{minipage}{0.6\textwidth}{\footnotesize
+            \textsc{Notes}: $h_{li}^g \geq 1$ implies that home production is more efficient that those of foreign affiliates.}
+        \end{minipage}
+\end{table}
+
+
+\subsubsection{Model}
+\paragraph{MP Cost}
+Unit cost of the MP input bundle for MP by $i$ in $l$:
+\begin{equation}
+ c_{li} = \bigg[ (1-a) (c_l h_{li})^{1 - \xi} + (a) (c_i d_{li})^{1 - \xi}
+    \bigg]^{\frac{1}{1-\xi}}
+\end{equation}
+
+\paragraph{Productivity Distributions}
+For a home country, she faces
+a vector $\mathbf{z}_i^s = (z_{1i}, z_{2i}, \cdots z_{Ii}), s = g, f$ that is 
+drawn independently across goods and countries from a Multivariate Frechet distribution:
+\begin{equation}
+    F_i\left(\mathbf{z}_i^s; T_i \right) 
+    =\exp \left[-T_i\left(\sum_{l=1}^I\left(z_{l i}^s\right)^{\frac{-\theta}{1-\rho}}\right)^{1-\rho}\right]
+\end{equation}
+where $\rho$ governs the correlation of productivity across production locations.
+
+\paragraph{Equilibrium Analysis}
+Final goods are non-tradable, so $i$ must produce them in destination country $n$ to obtain positive market share.
+Therefore, the price of final good $u$ in $n$ is 
+\begin{equation*}
+    p_n^f(u) = \min_i \frac{c_{ni}^f}{z_{ni}^f}
+\end{equation*}
+
+As $z_{ni}^f \sim F(z)$, 
+the share of expenditure by country $n$ on final goods produced in country $n$ with country $i$ technologies is 
+\begin{equation}
+    \pi_{ni}^f = \frac{T_i (c_{ni}^f)^{-\theta}}{\sum_j T_j (c_{nj}^f)^{-\theta}}
+\end{equation}
+
+
+Compared to non-tradable final goods,
+intermediate goods are tradable and can be imported from production countries that might differ 
+from the home countries and destination countries $(i \neq l \neq n)$.
+
+The price of intermediate good $v$ in $n$ is 
+\begin{equation*}
+    p_n^g(v) = \min_{i,l} \frac{c_{ni}^g d_{nl}}{z_{li}^g}, \quad d_{nl} \geq 1
+\end{equation*}
+where $z_{li}^g$ is home-production technology.
+As $z_{li}^g \sim F(z)$, 
+the share of expenditures by country $n$ on intermediate goods produced in country $l$ with country $i$ technology is:
+\begin{equation}
+    \pi_{n l i}^g = \frac{T_i\left(\tilde{c}_{n i}^g\right)^{-\theta}
+            }{
+                \sum_j T_j\left(\tilde{c}_{n j}^g\right)^{-\theta}} 
+                \frac{\left(c_{l i}^g d_{n l}\right)^{-\theta /(1-\rho)}
+                }{\sum_k\left(c_{k i}^g d_{n k}\right)^{-\theta /(1-\rho)}
+                }
+\end{equation}
+where $\tilde{c}_{n i}^g=\left(\sum_k\left(c_{k i}^g d_{n k}\right)^{-\theta /(1-\rho)}\right)^{-(1-\rho) / \theta}$
+This expression has a natural interpretation: 
+The first term on the right-hand side is the share of expenditures that country $n$ allocates to intermediate goods produced with
+country $i$’s technologies independently of the location where they are produced,
+while the second term on the right-hand side is the share of these goods that are produced in country $l$. 
+
+\subsection{Calibration}
