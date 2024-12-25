@@ -20,19 +20,29 @@ where $C_n^j$ denotes non-tradable final consumption goods.
 \begin{figure}[h!]
     \centering
     \caption{Roundabout Production}
-    \begin{tikzpicture}[node distance=50mm, on grid]
-        % Nodes arranged in a circular layout
-        \node[state, minimum size=32mm] (Q) 
-            {$Q_n^j = \left(\int y_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}}$};
-        \node[state, minimum size=15mm, above right=of Q] (C) {$C_n^j$};
-        \node[state, minimum size=15mm, below right=of Q] (M) {$M_n^{k,j}$};
-        \node[state, minimum size=15mm, below left=of Q] (y) {$y_n^j(w^j)$};
+    \begin{tikzpicture}[node distance=60mm, on grid]
+        % Nodes arranged in a rectangular layout with light blue fill
+        \node[draw, rectangle, fill=lightblue!50, minimum width=80mm, minimum height=15mm] (Q) 
+            {$Q_n^j = \left(\int y_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}} = C_n^j + \sum_{k=1}^J \int M_n^{j,k}(w^k)dw^k$};
+        \node[draw, rectangle, fill=lightblue!30, minimum width=20mm, minimum height=10mm, above right=of Q, yshift=5mm] (C) 
+            {$u(C_n^j) = \prod_{j=1}^J \left(C_n^j \right)^{\alpha_j}$}; % Adjusted position
+        \node[draw, rectangle, fill=lightblue!30, minimum width=100mm, minimum height=10mm, below left=of Q, yshift=-10mm] (y) 
+            {$y_n^j(w^j) = z_n^j(w^j)\bigg[ l_n^j(w^j) \bigg]^{\gamma_n^j} \prod_{k=1}^J \bigg[ M_n^{k,j}(w^j) \bigg]^{\gamma_n^{k,j}}$};
         
-        % Edges to represent the roundabout process
-        \draw[->, bend left] (Q) to (C);
-        \draw[->, bend left] (Q) to (M);
-        \draw[->, bend left] (M) to (y);
-        \draw[->, bend left] (y) to (Q);
+        % Edges to represent the roundabout process with adjusted curvature
+        \draw[->, very thick, >=Latex, bend left=30] (Q) to 
+            node[midway, below left=1mm, align=center, text width=70mm] 
+            {price of final goods $C_n^j$: \\ $P_n^j = A^j \bigg[\sum_{i}\lambda_i^j(c_i^j \kappa_{ni}^j)^{-\theta^j} \bigg]^{-\frac{1}{\theta^j}}$}
+            (C);
+        \draw[->, very thick, >=Latex, bend left=40] (Q) to 
+            node[midway, above right=1mm, align=center, text width=70mm] 
+            {price of composite goods $M_n^j$: \\ 
+            $P_n^j = A^j \bigg[\sum_{i}\lambda_i^j(c_i^j \kappa_{ni}^j)^{-\theta^j} \bigg]^{-\frac{1}{\theta^j}}$} 
+            (y);
+        \draw[->, very thick, >=Latex, bend left=30] (y) to 
+            node[midway, below left=1mm, align=center, text width=70mm] 
+            {price of $w^j$ in $n$: \\ $ p_n^j(w^j) = \min_i \frac{\kappa_{ni}^j c_{ni}^j}{z_i^j(w^j)}$} 
+            (Q);
     \end{tikzpicture}
 \end{figure}
 
@@ -57,6 +67,24 @@ where
     \item $M_n^{k,j}(w^j)$ is the materials from sector $k$ used for the production of intermediate good $\omega^j$ (capturing the roundabout production)
     \item $\gamma_n^{k,j} \geq 0$ is the share of the materials used from $k$ in $j$ (capturing the strength of the I-O linkages)
 \end{enumerate}
+
+\paragraph{Composite goods: CES across goods}%
+Producers of composite goods in sector $j$ and country $n$ supply final consumptions $C_n^j$ and materials $M_n^{k,j}$
+using a CES technology across goods:
+\begin{equation}
+    Q_n^j = \left(\int q_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}}
+\end{equation}
+where $\sigma^j > 1$ is the elasticity of substitution across intermediate goods within sector $j$,
+and $q_n^j (w^j)$ is the demand of intermediate goods $w^j$ from the lowest cost supplier.
+
+\paragraph{Trade costs}
+There are two types of trade costs: iceberg trade costs and an ad-valorem flat-rate tariffs:
+\begin{equation}
+    \kappa_{ni}^j = (1 + \tau_{ni}^j) d_{ni}^j = \tilde{\tau}_{ni}^j d_{ni}^j 
+\end{equation}
+
+
+\paragraph{Prices and Expenditure}
 Since production of intermediate goods is at CRS and markets are perfectly competitive,
 firms price at unit cost, $c_n^j / z_n^j(w^j)$,
 where $c_n^j$ denotes the costs of an input bundle.
@@ -65,12 +93,7 @@ In particular,
     c_n^j = \Gamma_n^j \times (w_n^j)^{\gamma_n^j} \prod_{k=1}^J (P_{n}^k)^{\gamma_n^{k,j}}
 \end{equation}
 
-
-\paragraph{Composite goods}%
-Producers of composite goods in sector $j$ and country $n$ supply final consumptions $C_n^j$ and materials $M_n^{k,j}$
-using a CES technology:
+Given trade cost structure, the price of $\omega^j$ in $n$ is 
 \begin{equation}
-    Q_n^j = \left(\int q_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}}
+    p_n^j(w^j) = \min_i \frac{\kappa_{ni}^j c_n^j}{z_i^j(w^j)}
 \end{equation}
-where $\sigma^j > 1$ is the elasticity of substitution across intermediate goods within sector $j$,
-and $q_n^j (w^j)$ is the demand of intermediate goods $w^j$ from the lowest cost supplier:
