@@ -1,0 +1,31 @@
+\subsubsection{Model}
+\paragraph{Environment}
+$N$ countries.
+$J$ sectors.
+One factor of production, labor.
+
+\paragraph{Households}
+\begin{equation}
+    u(C_n) = \prod_{j=1}^J \left(C_n^j \right)^{\alpha_j}, \quad \text{where } \sum_{j} \alpha_j = 1
+\end{equation}
+where $C_n^j$ denotes non-tradable final goods.
+
+\paragraph{Intermediate goods}%
+\footnote{
+    \cite{Antras:2022} term the production function in \cite{Caliendo:2015} as a ``roundabout model''
+    and suggest that ``it has quickly become a benchmark model in the field [of GVCs].''
+}
+A continuum of intermediate goods $\omega^j \in [0, 1]$ is produced in each sector $j$.
+Two types of inputs, labor and ``materials'' from all sectors are used for the 
+production of each $\omega^j$.
+The production technology of a good $\omega^j$ is 
+\begin{equation}
+    q_n^j(w^j) = z_n^j(w^j)\bigg[ l_n^j(w^j) \bigg]^{\gamma_n^j} \prod_{k=1}^J \bigg[ m_n^{k,j}(w^j) \bigg]^{\gamma_n^{k,j}}
+\end{equation}
+where
+\begin{enumerate}
+    \item $z_n^j(w^j)$ governs the efficiency of producing intermediate good $\omega^j$ in county $n$
+    \item $l_n^j(w^j)$ is labor
+    \item $m_n^{k,j}(w^j)$ is the materials from sector $k$ used for the production of intermediate good $\omega^j$ (capturing the roundabout production)
+    \item $\gamma_n^{k,j} \geq 0$ is the share of the materials used from $k$ in $j$ (capturing the strength of the I-O linkages)
+\end{enumerate}
