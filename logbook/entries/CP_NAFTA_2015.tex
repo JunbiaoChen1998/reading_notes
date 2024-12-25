@@ -31,17 +31,18 @@ where $C_n^j$ denotes non-tradable final consumption goods.
         
         % Edges to represent the roundabout process with adjusted curvature
         \draw[->, very thick, >=Latex, bend left=30] (Q) to 
-            node[midway, below left=1mm, align=center, text width=70mm] 
+            node[midway, left=1mm, align=center, text width=70mm] 
             {price of final goods $C_n^j$: \\ $P_n^j = A^j \bigg[\sum_{i}\lambda_i^j(c_i^j \kappa_{ni}^j)^{-\theta^j} \bigg]^{-\frac{1}{\theta^j}}$}
             (C);
         \draw[->, very thick, >=Latex, bend left=40] (Q) to 
-            node[midway, above right=1mm, align=center, text width=70mm] 
+            node[midway, right=1mm, align=center, text width=70mm] 
             {price of composite goods $M_n^j$: \\ 
             $P_n^j = A^j \bigg[\sum_{i}\lambda_i^j(c_i^j \kappa_{ni}^j)^{-\theta^j} \bigg]^{-\frac{1}{\theta^j}}$} 
             (y);
         \draw[->, very thick, >=Latex, bend left=30] (y) to 
-            node[midway, below left=1mm, align=center, text width=70mm] 
-            {price of $w^j$ in $n$: \\ $ p_n^j(w^j) = \min_i \frac{\kappa_{ni}^j c_{ni}^j}{z_i^j(w^j)}$} 
+            node[midway, left=1mm, align=center, text width=70mm] 
+            {price of $w^j$ in $n$: \\ $ p_n^j(w^j) = \min_i \frac{\kappa_{ni}^j c_{ni}^j}{z_i^j(w^j)}$, \\ 
+            $c_{ni}^j = (w_n)^{\gamma_n^j} \prod_k (P_n^k)^{\gamma_{n}^{kj}}$} 
             (Q);
     \end{tikzpicture}
 \end{figure}
