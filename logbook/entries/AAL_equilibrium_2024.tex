@@ -24,20 +24,24 @@ In short, this paper approaches the analysis of $N^2 \times H$ functions $\{ f_{
 to a $H \times H$ matrix $(\mathbf{A})_{hh'} \equiv \sup_{ij} \left( \mid \frac{\partial \ln f_{ijh}}{\partial \ln x_{jh'}} \mid \right)$
 that characterize the strength of the economic interactions.
 
-\subsubsection{Perov Fixed Point Theorem}
-Let $\left\{\left(X_h, d_h\right)\right\}_{h=1,2, \ldots, H}$ be $H$ metric spaces 
+\subsubsection{Perov Fixed Point Theorem}%
+Perov FP Theorem is a multi-dimensional extension of the standard contraction mapping theorem (CMT).%
+\footnote{
+    Recall that the standard CMT follows \citep{Stokey:1989}:
+}
+Let $\left\{\left(X_h, d_h\right)\right\}_{h=1,2, \ldots, H}$ be $H$ metric spaces, 
 where $X_h$ is a set and $d_h$ is its corresponding metric. 
-Define $X \equiv X_1 \times X_2 \times \ldots \times X_H$, 
+Define $\mathbf{X} \equiv X_1 \times X_2 \times \ldots \times X_H$, 
 and $d$ : $X \times X \rightarrow \mathbb{R}_{+}^H$ such that 
 for $x=\left(x_{1, \ldots,} x_H\right)$, 
-$x^{\prime}=\left(x_{1, \ldots,}^{\prime}, x_H^{\prime}\right) \in X$, 
+$x^{\prime}=\left(x_{1, \ldots,}^{\prime}, x_H^{\prime}\right) \in \mathbf{X}$, 
 $d\left(x, x^{\prime}\right)=\left(\begin{array}{c}d_1\left(x_1, x_1^{\prime}\right) \\ \ldots \\ d_H\left(x_H, x_H^{\prime}\right)\end{array}\right)$. 
 Given operator $T: X \rightarrow X$, suppose for any $x, x^{\prime} \in X$
 $$
 d\left(T(x), T\left(x^{\prime}\right)\right) \leq \mathbf{A} d\left(x, x^{\prime}\right)
 $$
 where $\mathbf{A}$ is a non-negative matrix and the inequality is entry-wise. 
-Denote $\rho \mathbf{( \mathbf { A } ) \text { as the }}$ spectral radius of $\mathbf{A}$. If $\rho(\mathbf{A})<1$ 
+Denote $\rho \mathbf{( \mathbf { A } )}$ as the spectral radius of $\mathbf{A}$. If $\rho(\mathbf{A})<1$ 
 and for all $h=1,2, \ldots, H,\left(X_h, d_h\right)$ is complete, 
 there exists a unique fixed point of $T$, 
 and for any $x \in X$, the sequence of $x, T(x), T(T(x)), \ldots$ 
@@ -76,7 +80,7 @@ Then:
     
 \end{enumerate}
 
-Proof. Part (i): Notice that equation~(\ref{eqn:AAL_NH_system}) 
+\noindent Proof. Part (i): Notice that equation~(\ref{eqn:AAL_NH_system}) 
 can be written as 
 $y_{i h} \equiv \ln x_{i h}=\ln \sum_{j \in \mathcal{N}} f_{i j h}\left(\exp \ln x_j\right)$ 
 and furthermore denote its right side as function $g_{i h}(y)$ for matrix $y$, we thus have:
@@ -108,4 +112,4 @@ Notice that inequality~(\ref{eqn:proof_part_i3}) then becomes $d\left(g(y), g\le
 Thus we can apply the Perov Fixed Point Theorem to obtain the desired results 
 (existence, uniqueness and computation).
 
-\subsection{Application to Spatial Models with Input-output Linkages}
+\subsubsection{Application to Spatial Models with Input-output Linkages}

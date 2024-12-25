@@ -5,7 +5,7 @@ or exogenous shares \citep{Goldsmith-Pinkham:2020}.
 This paper presents the core logic of both paths and practical takeaways.
 
 
-\subsection{ADH (2003)'s SSIV}
+\subsubsection{ADH (2003)'s SSIV}
 The influential China shock paper by ADH 
 constructs an instrumental variable with a shift-share structure:
 \begin{equation}
@@ -13,7 +13,7 @@ constructs an instrumental variable with a shift-share structure:
 \end{equation}
 where $k$ denotes industry and $j$ denotes commuting zone.
 
-\subsection{Definition of SSIV}
+\subsubsection{Definition of SSIV}
 A shift-share structure follows
 \begin{equation}
     z_i = \sum_{k=1}^K \underbrace{s_{ik}}_{\text{Share}} 
@@ -35,13 +35,13 @@ The key threat to identification in the exogenous shifts approach is the violati
     $g_k$ should be uncorrelated with an average of $\epsilon_i$ taken across units with weights $s_{ik}$.
 }
 
-\subsection{Incomplete Shift Share}
+\subsubsection{Incomplete Shift Share}
 \label{sec:ssiv_incomplete_share}
 In shift-share designs where the exposure shares $s_{i,k}$ do not add up to one,
 a special control must by included: the sum of shares, $S_i = \sum_{k} s_{i,k}$.
 This control remedies the bias arising from the correlation between $S_i$ and the error.
 
-\subsection{A Checklist for the Shift-Based Approach}
+\subsubsection{A Checklist for the Shift-Based Approach}
 \begin{enumerate}
     \item Thinking about what endogeneity bias is being addressed.
     \item Bridge the gap between the observed and ideal shifts. 
