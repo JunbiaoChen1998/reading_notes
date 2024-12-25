@@ -3,7 +3,10 @@ The Caliendo-Parro model is a multi-industry extension of the EK (2002) Ricardia
 \paragraph{Environment}
 $N$ countries.
 $J$ sectors.
-One factor of production, labor.
+\textbf{One factor of production, labor, which is mobile across sectors but not across countries}.%
+\footnote{
+    See~\cite{Caliendo:2018} for the extension to a spatial setting with mobile labor across locations.
+}
 CRS production function.
 Output produced in all sectors can be used as intermediate input or a final good.
 
@@ -12,10 +15,7 @@ The representative consumer in each country has preferences over the output of t
 \begin{equation}
     u(C_n) = \prod_{j=1}^J \left(C_n^j \right)^{\alpha_j}, \quad \text{where } \sum_{j} \alpha_j = 1
 \end{equation}
-where $C_n^j$ denotes non-tradable a final (consumer) good.%
-\footnote{
-    \cite{Antras:2022} refer $C_n^j$ as a consumer good.
-}
+where $C_n^j$ denotes non-tradable final consumption goods.
 
 \begin{figure}[h!]
     \centering
@@ -52,11 +52,25 @@ The production technology of a good $\omega^j$ is
 \end{equation}
 where
 \begin{enumerate}
-    \item $z_n^j(w^j) \sim \text{Frechet}$ governs the efficiency of producing intermediate good $\omega^j$ in county $n$
+    \item ``$z_n^j(w^j) \sim \text{Frechet}$'' governs the efficiency of producing intermediate good $\omega^j$ in county $n$
     \item $l_n^j(w^j)$ is labor
     \item $M_n^{k,j}(w^j)$ is the materials from sector $k$ used for the production of intermediate good $\omega^j$ (capturing the roundabout production)
     \item $\gamma_n^{k,j} \geq 0$ is the share of the materials used from $k$ in $j$ (capturing the strength of the I-O linkages)
 \end{enumerate}
+Since production of intermediate goods is at CRS and markets are perfectly competitive,
+firms price at unit cost, $c_n^j / z_n^j(w^j)$,
+where $c_n^j$ denotes the costs of an input bundle.
+In particular,
+\begin{equation}
+    c_n^j = \Gamma_n^j \times (w_n^j)^{\gamma_n^j} \prod_{k=1}^J (P_{n}^k)^{\gamma_n^{k,j}}
+\end{equation}
+
 
 \paragraph{Composite goods}%
-Producers of composite goods in sector $j$ and country $n$, supply final consumptions $C_n^j$ and materials $M_n^{k,j}$
+Producers of composite goods in sector $j$ and country $n$ supply final consumptions $C_n^j$ and materials $M_n^{k,j}$
+using a CES technology:
+\begin{equation}
+    Q_n^j = \left(\int q_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}}
+\end{equation}
+where $\sigma^j > 1$ is the elasticity of substitution across intermediate goods within sector $j$,
+and $q_n^j (w^j)$ is the demand of intermediate goods $w^j$ from the lowest cost supplier:
