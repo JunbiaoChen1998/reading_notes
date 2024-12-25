@@ -4,8 +4,11 @@ The Caliendo-Parro model is a multi-industry extension of the EK (2002) Ricardia
 $N$ countries.
 $J$ sectors.
 One factor of production, labor.
+CRS production function.
+Output produced in all sectors can be used as intermediate input or a final good.
 
-\paragraph{Households}
+\paragraph{Preferences}
+The representative consumer in each country has preferences over the output of the $S$ sectors given by:
 \begin{equation}
     u(C_n) = \prod_{j=1}^J \left(C_n^j \right)^{\alpha_j}, \quad \text{where } \sum_{j} \alpha_j = 1
 \end{equation}
@@ -13,6 +16,25 @@ where $C_n^j$ denotes non-tradable a final (consumer) good.%
 \footnote{
     \cite{Antras:2022} refer $C_n^j$ as a consumer good.
 }
+
+\begin{figure}[h!]
+    \centering
+    \caption{Roundabout Production}
+    \begin{tikzpicture}[node distance=50mm, on grid]
+        % Nodes arranged in a circular layout
+        \node[state, minimum size=32mm] (Q) 
+            {$Q_n^j = \left(\int y_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}}$};
+        \node[state, minimum size=15mm, above right=of Q] (C) {$C_n^j$};
+        \node[state, minimum size=15mm, below right=of Q] (M) {$M_n^{k,j}$};
+        \node[state, minimum size=15mm, below left=of Q] (y) {$y_n^j(w^j)$};
+        
+        % Edges to represent the roundabout process
+        \draw[->, bend left] (Q) to (C);
+        \draw[->, bend left] (Q) to (M);
+        \draw[->, bend left] (M) to (y);
+        \draw[->, bend left] (y) to (Q);
+    \end{tikzpicture}
+\end{figure}
 
 \paragraph{Intermediate goods}%
 \footnote{
@@ -22,16 +44,19 @@ where $C_n^j$ denotes non-tradable a final (consumer) good.%
     in shaping response of the world economy to various types of shocks.''
 }
 A continuum of intermediate goods $\omega^j \in [0, 1]$ is produced in each sector $j$.
-Two types of inputs, labor and ``materials'' from all sectors are used for the 
+Two types of inputs, labor and ``materials from all sectors'' are used for the 
 production of each $\omega^j$.
 The production technology of a good $\omega^j$ is 
 \begin{equation}
-    q_n^j(w^j) = z_n^j(w^j)\bigg[ l_n^j(w^j) \bigg]^{\gamma_n^j} \prod_{k=1}^J \bigg[ m_n^{k,j}(w^j) \bigg]^{\gamma_n^{k,j}}
+    y_n^j(w^j) = z_n^j(w^j)\bigg[ l_n^j(w^j) \bigg]^{\gamma_n^j} \prod_{k=1}^J \bigg[ M_n^{k,j}(w^j) \bigg]^{\gamma_n^{k,j}}
 \end{equation}
 where
 \begin{enumerate}
-    \item $z_n^j(w^j)$ governs the efficiency of producing intermediate good $\omega^j$ in county $n$
+    \item $z_n^j(w^j) \sim \text{Frechet}$ governs the efficiency of producing intermediate good $\omega^j$ in county $n$
     \item $l_n^j(w^j)$ is labor
-    \item $m_n^{k,j}(w^j)$ is the materials from sector $k$ used for the production of intermediate good $\omega^j$ (capturing the roundabout production)
+    \item $M_n^{k,j}(w^j)$ is the materials from sector $k$ used for the production of intermediate good $\omega^j$ (capturing the roundabout production)
     \item $\gamma_n^{k,j} \geq 0$ is the share of the materials used from $k$ in $j$ (capturing the strength of the I-O linkages)
 \end{enumerate}
+
+\paragraph{Composite goods}%
+Producers of composite goods in sector $j$ and country $n$, supply final consumptions $C_n^j$ and materials $M_n^{k,j}$
