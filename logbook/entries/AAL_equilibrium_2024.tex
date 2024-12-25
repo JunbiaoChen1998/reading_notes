@@ -14,7 +14,7 @@ of each interaction in each locations,
 and $f_{ijh}: \mathbb{R}_{++}^{H} \rightarrow \mathbb{R}_{++}$ are known functions that govern the interactions across locations.
 In other words, $f_{ijh}$ governs the impact of location $j$ on $i$'s $h$ via $H$ linkages.
 
-\subsection{Overview}
+\subsubsection{Overview}
 This paper provides a new theorem that offers
 \begin{enumerate}
     \item an iterative algorithm for calculating an equilibrium and 
@@ -24,7 +24,88 @@ In short, this paper approaches the analysis of $N^2 \times H$ functions $\{ f_{
 to a $H \times H$ matrix $(\mathbf{A})_{hh'} \equiv \sup_{ij} \left( \mid \frac{\partial \ln f_{ijh}}{\partial \ln x_{jh'}} \mid \right)$
 that characterize the strength of the economic interactions.
 
-\subsection{The Theorem}
+\subsubsection{Perov Fixed Point Theorem}
+Let $\left\{\left(X_h, d_h\right)\right\}_{h=1,2, \ldots, H}$ be $H$ metric spaces 
+where $X_h$ is a set and $d_h$ is its corresponding metric. 
+Define $X \equiv X_1 \times X_2 \times \ldots \times X_H$, 
+and $d$ : $X \times X \rightarrow \mathbb{R}_{+}^H$ such that 
+for $x=\left(x_{1, \ldots,} x_H\right)$, 
+$x^{\prime}=\left(x_{1, \ldots,}^{\prime}, x_H^{\prime}\right) \in X$, 
+$d\left(x, x^{\prime}\right)=\left(\begin{array}{c}d_1\left(x_1, x_1^{\prime}\right) \\ \ldots \\ d_H\left(x_H, x_H^{\prime}\right)\end{array}\right)$. 
+Given operator $T: X \rightarrow X$, suppose for any $x, x^{\prime} \in X$
+$$
+d\left(T(x), T\left(x^{\prime}\right)\right) \leq \mathbf{A} d\left(x, x^{\prime}\right)
+$$
+where $\mathbf{A}$ is a non-negative matrix and the inequality is entry-wise. 
+Denote $\rho \mathbf{( \mathbf { A } ) \text { as the }}$ spectral radius of $\mathbf{A}$. If $\rho(\mathbf{A})<1$ 
+and for all $h=1,2, \ldots, H,\left(X_h, d_h\right)$ is complete, 
+there exists a unique fixed point of $T$, 
+and for any $x \in X$, the sequence of $x, T(x), T(T(x)), \ldots$ 
+converges to the fixed point of $T$.
 
+\subsubsection{The Theorem}
+
+\begin{table}[h]
+    \caption{Notations in \cite{Allen:2024}}
+        \centering
+        \begin{tabular}{c l} \toprule
+            Notation & Meaning \\ \hline
+            $f_{ijh}$ & type $h$-spatial linkage \\
+            $x_{ih}$ & location $i$'s equilibrium outcome $h$ \\
+            $\epsilon_{ijh,jh'}(x_{j})$ & the impact of location $j$'s outcome $h'$ on $i$'s outcome h \\
+            $\mathbf{A}$ & bounds of the elasticities $\epsilon_{ijh,jh'}(x_{j})$ \\
+            $\rho(\mathbf{A})$ & spectral radius of matrix $\mathbf{A}$ \\
+            \bottomrule
+        \end{tabular}
+        \begin{minipage}{0.6\textwidth}{\footnotesize
+            \textsc{Notes}:}
+        \end{minipage}
+\end{table}
+
+\paragraph{Theorem 1}
+Suppose there exists an $H$-by-$H$ matrix $\mathbf{A}$ 
+such that for all $i, j \in \mathcal{N}, h, h^{\prime} \in \mathcal{H}$, 
+and $x_j \in \mathbb{R}_{++}^H,\left|\epsilon_{i j h, j h^{\prime}}\left(x_j\right)\right| \leq(\mathbf{A})_{h h^{\prime}}$. 
+Then:
+\begin{enumerate}[(i)]
+    \item If $\rho(\mathbf{A})<1$, then there exists a unique solution to equation (1) which can be computed by iteratively applying equation (1) with a rate of convergence $\rho \mathbf{( A )}$;
+    \item If $\rho(\mathbf{A})=1$ and:
+    a. For all $i \in \mathcal{N}$ and $h, h^{\prime} \in \mathcal{H}$ when $(\mathbf{A})_{h h^{\prime}} \neq 0$ there exists some $j$ such that for all $x_j \in \mathbb{R}_{++}^H,\left|\epsilon_{i j h, j h^{\prime}}\left(x_j\right)\right|<(\mathbf{A})_{h h^{\prime}}$, then equation (1) has at most one solution;
+    b. For all $x_j, \epsilon_{i j h, j h^{\prime}}\left(x_j\right)=\alpha_{h h^{\prime}} \in \mathbb{R}$ where $\left|\alpha_{h h^{\prime}}\right|=(\mathbf{A})_{h h^{\prime}}$ for all $i, j \in \mathcal{N}$ and $h, h^{\prime} \in$ $\mathcal{H}$-i.e. $f_{i j h}\left(x_j\right)=K_{i j h} \prod_{h^{\prime} \in \mathcal{H}} x_{j h^{\prime}}^{\alpha_{h h^{\prime}}}$ for some $K_{i j h}>0$-then there is at most one columnwise up-to-scale solution, i.e. for every two solutions $x$ and $x^{\prime}$ and $h \in \mathcal{H}$, it must be $x_{. h}^{\prime}=c_h x_{. h}$ for some scalar $c_h>0$;
+    \item If $\rho(\mathbf{A})>1$ and $N \geq 2 H+1$, then there exists some $\left\{K_{i j h}>0\right\}_{i, j \in \mathcal{N}, h \in \mathcal{H}}$ such that for $f_{i j h}\left(x_j\right)=K_{i j h} \prod_{h^{\prime} \in \mathcal{H}} x_{j h^{\prime}}^{\alpha_{h h^{\prime}}}$ where $\alpha_{h h^{\prime}} \in \mathbb{R}$ and $\left|\alpha_{h h^{\prime}}\right|=(\mathbf{A})_{h h^{\prime}}$, equation (1) has multiple solutions that are column-wise up-to-scale different, i.e. it has two solutions $x$ and $x^{\prime}$ such that for some $h \in \mathcal{H}, x_{. h}^{\prime} \neq c_h x_{. h}$ with every $c_h>0$.
+    
+\end{enumerate}
+
+Proof. Part (i): Notice that equation~(\ref{eqn:AAL_NH_system}) 
+can be written as 
+$y_{i h} \equiv \ln x_{i h}=\ln \sum_{j \in \mathcal{N}} f_{i j h}\left(\exp \ln x_j\right)$ 
+and furthermore denote its right side as function $g_{i h}(y)$ for matrix $y$, we thus have:
+\begin{equation}
+    \label{eqn:proof_part_i1}
+    \frac{\partial g_{i h}}{\partial y_{j h^{\prime}}}=\frac{\epsilon_{i j h, j h^{\prime}}\left(\exp y_j\right) f_{i j h}\left(\exp y_j\right)}{\sum_{k \in \mathcal{N}} f_{i k h}\left(\exp y_j\right)}
+\end{equation}
+
+
+
+Given any $y$ and $y^{\prime}$, according to the mean value theorem, for each $i$ and $h$, 
+there exists $\hat{y}=\left(1-t_{i h}\right) y+t_{i h} y^{\prime}$ where $t_{i h} \in[0,1]$ such that:
+\begin{equation}
+    \label{eqn:proof_part_i2}
+    g_{i h}(y)-g_{i h}\left(y^{\prime}\right)=\sum_{j \in \mathcal{N}, h^{\prime} \in \mathcal{H}} \frac{\partial g_{i h}(\hat{y})}{\partial y_{j h^{\prime}}}\left(y_{j h^{\prime}}-y_{j h^{\prime}}^{\prime}\right)
+\end{equation}
+
+
+Equations~(\ref{eqn:proof_part_i1}) and (\ref{eqn:proof_part_i2}) together with 
+condition $\left|\epsilon_{i j h, j h^{\prime}}\left(x_j\right)\right| \leq(\mathbf{A})_{h h^{\prime}}$, imply
+\begin{equation}
+    \label{eqn:proof_part_i3}
+\left|g_{i h}(y)-g_{i h}\left(y^{\prime}\right)\right| \leq \sum_{h^{\prime} \in \mathcal{H}}(\mathbf{A})_{h h^{\prime}} \max _{j \in \mathcal{N}}\left|y_{j h^{\prime}}-y_{j h^{\prime}}^{\prime}\right|
+\end{equation}
+
+For any $h \in H$, define metric $d_h\left(y_h, y_h^{\prime}\right)=\max _{j \in \mathcal{N}}\left|y_{j h}-y_{j h}^{\prime}\right|$ on space $Y_h \equiv \mathbb{R}^N$. 
+Furthermore, define $Y=Y_1 \times \ldots \times Y_H$ and $d\left(y, y^{\prime}\right)=\left[d_1\left(y_1, y_1^{\prime}\right), \ldots, d_H\left(y_H, y_H^{\prime}\right)\right]^{\prime}$ for $y, y^{\prime} \in Y$.
+Notice that inequality~(\ref{eqn:proof_part_i3}) then becomes $d\left(g(y), g\left(y^{\prime}\right)\right) \leqq \mathbf{A} d\left(y, y^{\prime}\right)$. 
+Thus we can apply the Perov Fixed Point Theorem to obtain the desired results 
+(existence, uniqueness and computation).
 
 \subsection{Application to Spatial Models with Input-output Linkages}
