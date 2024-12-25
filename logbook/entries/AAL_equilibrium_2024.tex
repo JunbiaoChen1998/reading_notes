@@ -1,0 +1,30 @@
+\subsubsection{Setting}
+Exponential growth in computational power and new micro-data allow
+the empirical implementation of models where large number of agents (e.g., locations) interact 
+with each other in multiple ways (e.g., spatial linkages).
+
+Consider a system of $N$ locations across which there are $H$ types of interactions whose equilibrium 
+can be reduced to a set of $N \times H$ equations of the following forms:
+\begin{equation}
+    \label{eqn:AAL_NH_system}
+    x_{ih} = \sum_{j = 1}^N f_{ijh}(x_{j1}, x_{j2}, \cdots, x_{jH})
+\end{equation}
+where $\{ x_{ih}\} \in \mathbb{R}_{++}^{N \times H}$ reflect the (strictly positive) equilibrium outcome
+of each interaction in each locations,
+and $f_{ijh}: \mathbb{R}_{++}^{H} \rightarrow \mathbb{R}_{++}$ are known functions that govern the interactions across locations.
+In other words, $f_{ijh}$ governs the impact of location $j$ on $i$'s $h$ via $H$ linkages.
+
+\subsection{Overview}
+This paper provides a new theorem that offers
+\begin{enumerate}
+    \item an iterative algorithm for calculating an equilibrium and 
+    \item sufficient and “globally necessary” conditions under which the equilibrium is unique.
+\end{enumerate}
+In short, this paper approaches the analysis of $N^2 \times H$ functions $\{ f_{ijh} \}$ in equation~(\ref{eqn:AAL_NH_system})
+to a $H \times H$ matrix $(\mathbf{A})_{hh'} \equiv \sup_{ij} \left( \mid \frac{\partial \ln f_{ijh}}{\partial \ln x_{jh'}} \mid \right)$
+that characterize the strength of the economic interactions.
+
+\subsection{The Theorem}
+
+
+\subsection{Application to Spatial Models with Input-output Linkages}
