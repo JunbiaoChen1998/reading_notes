@@ -9,9 +9,9 @@ All errors are my own.}
 \date{}
 
 %%PACKAGES
+\usepackage{mdframed} % For boxed environments
 \usepackage{graphicx}
 \usepackage{grffile}
-\graphicspath{ {../output/figures/} }
 \usepackage{tabularx}
 \usepackage{setspace}
 \usepackage{amsmath,amsthm,amssymb}
@@ -94,7 +94,39 @@ All errors are my own.}
 	initial text=$ $, % sets the text that appears on the start arrow
  }
 
+%% PROPOSITION
+% Define the Proposition environment
+\newmdenv[
+  innerleftmargin=10pt, 
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  linecolor=black, 
+  linewidth=1pt,
+  backgroundcolor=white, 
+  roundcorner=5pt
+]{propositionbox}
+
+\newtheoremstyle{boldtitle} % Define a new theorem style
+  {10pt} % Space above
+  {10pt} % Space below
+  {\itshape} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  { } % Space after theorem head
+  {} % Theorem head spec
+
+\theoremstyle{boldtitle} % Use the custom style
+\newtheorem{proposition}{Proposition} % Define the proposition environment
+
+% Redefine the proposition environment to use the box
+\newenvironment{boxedproposition}[1][]
+{\begin{propositionbox}\begin{proposition}[#1]}
+{\end{proposition}\end{propositionbox}}
+
 %%FORMATTING
+\usepackage[bottom]{footmisc}
 \onehalfspacing
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
@@ -130,8 +162,11 @@ All errors are my own.}
 %%LOGBOOK ENTRIES: Research design
 \chapter{International Trade}
 \section{Gains from Trade}
+\subsection{``New trade models, same old gains?'' \citep{Arkolakis:2012}}
+\clearpage
 \subsection{``Trade with Correlation''  \citep{Lind:2023}} \input{entries/Lind_Ramondo_Trade_wCorrelation_2023.tex}
 
+\clearpage
 \section{Multi-country, Multi-sectoral Ricardian Model}
 \subsection{``Estimates of the Trade and Welfare Effects of NAFTA'' \\ \citep{Caliendo:2015}} \input{entries/CP_NAFTA_2015.tex}
 

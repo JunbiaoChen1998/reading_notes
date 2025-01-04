@@ -6,11 +6,14 @@ which, although leading to convenient functional forms for estimation,
 restrict \textbf{expenditure substitution patterns} and 
 \textbf{impact inference on the gains from trade}.
 
-\subsubsection{Takeaway and Contribution}
-\paragraph{Takeaway}
+\subsubsection{Takeaways and Contribution}
+\paragraph{Takeaways}
 \begin{enumerate}
-    \item This paper proposes a cross-nested CES structure for productivity, 
-where the novelty comes from treating each nest as an unobserved—or, latent—dimension of the data.
+    \item This paper proposes a cross-nested CES (CNCES) structure for productivity draws, 
+    which treating the nests as latent factors in the multisector trade data.
+    In the context of Ricardian theory, 
+    these latent factors have a natural interpretation 
+    that production and transportation technology may be shared across countries and sectors.
 % Particularly, this paper partitions sectors into multiple nests in a multisector Ricardian model,
 % allowing rich cross-sector substition patterns in counterfactual analysis.
     \item This paper presents an alternative to the BLP procedure in \citep{Adao:2017}, but shares the same
@@ -18,9 +21,17 @@ where the novelty comes from treating each nest as an unobserved—or, latent—
 \end{enumerate}
 
 \paragraph{Contribution}
-This paper generalizes the ACR's gains from trade to a GEV class.
+This paper generalizes the ACR's gains from trade sufficient statistics to a GEV class.
+% Generally, it is the correlation function that controls comparative advantage 
+% since it determines the joint distribution of productivity between any two countries.
+Assuming productivities are drawn from CNCES, the gains from trade (GFT) relative to autarky are
+\begin{equation}
+\frac{W_d / P_d}{W_d^A / P_d^A}=\pi_{d d}^{-1 / \theta}\left[\sum_{k=1}^K \frac{\left(\pi_{k d d}^W\right)^{1-\rho_k} \pi_{k d}^B}{\pi_{d d}}\right]^{-\frac{1}{\theta}}
+\end{equation}
+Notably, the GFT not only depends on own share $\pi_{dd}$, and shape parameter of Fr\'{e}chet $\theta$,
+but also nest-own trade share $\pi_{kd}$ and correlation coefficients $\rho_s$.
 
-\subsubsection{A GEV Framework}
+\subsubsection{Theory}
 \paragraph{Preferences}
 Consumers have identical CES preferences over continuum of goods, $v \in [0,1]$ 
 with elasticity of substitution $\eta > 1$.
@@ -35,6 +46,7 @@ is the price level, and $X_d$ is total expenditure in country $d$.
 \paragraph{Production}
 Each good $v$ is produced with a labor-only technology that features constant returns to scale:
 \begin{equation}
+\label{eqn:production_technology}
     Y_{od}(v) = Z_{od}(v)L_{od}(v),
 \end{equation}
 where $Z_{od}(v)$ is a generalization of the standard iceberg trade costs assumption 
@@ -59,4 +71,63 @@ while the shape parameter regulates the heterogeneity of iid productivity draws 
     The smaller $\theta$ is, the greater the heterogeneity.
 }
 
-The function $G^d$ is a correlation function, also called tail dependence function in probability and statistics. This function allows for a flexible dependence
+The function $G^d$ is a correlation function, 
+also called \textcolor{blue}{tail dependence function} 
+in probability and statistics. 
+This function allows for a flexible dependence structure across origin countries $o$ 
+serving destination $d$.%
+\footnote{
+    See Gudendorf, Gordon, and Johan Segers. 2010. “Extreme-Value Copulas.”
+}
+In EK (2002), productivities are independent across origin countries, so 
+$G^d(x_1, x_2, \ldots, x_N) = \sum_{o=1}^N x_o$,
+and
+\begin{equation}
+    \begin{aligned}
+        \text{Pr}\left[Z_{1 d}(v) \leq z_1, \ldots, Z_{N d}(v) \leq z_N\right] & 
+        = \prod_{o=1,\ldots,N}  \text{Pr}\left[Z_{o d}(v) \leq z_o \right] \\
+        & = \exp \left( - \sum_{o=1}^N T_{od} z_o^{-\theta} \right)
+    \end{aligned}
+\end{equation}
+
+\textbf{Remark:} With independent productivities, 
+$\theta$ alone governs the gains from trade in the EK model.
+
+
+
+\begin{boxedproposition}[CNCES Approximation]
+    Any correlation function can be approximated uniformly on compact sets using a cross-nested CES (CNCES) correlation function.
+    \begin{equation}
+        \label{eqn:cnces:approx}
+        G^d\left(x_1, \ldots, x_N\right)=\sum_{s=1}^S\left[\sum_{o=1}^N\left(\omega_{s o d} x_o\right)^{\frac{1}{1-\rho_s}}\right]^{1-\rho_s},
+    \end{equation}
+where $s = 1,2,\ldots,S$ is the nest index. 
+$\rho_s \in[0,1) \forall s$ is correlation coefficient that governs the correlation in productivity across origins within nest $s$. 
+For $\rho_s=0$, productivity is independent and the $s^{th}$ nest is additive. 
+In contrast, as $\rho_k \rightarrow 1$,
+productivity becomes perfectly correlated within nest $s$, and the $s^{th}$ nest converges to a max function.
+$\omega_{s o d}>0$, and $\sum_s \omega_{s o d}=1$. 
+The weight $\omega_{s o d}$ indicates the relative importance of each nest $s$ for a given trading pair od. 
+If $\omega_{s o d}$ is high, nest $s$ is particularly productive in country $o$ for delivery to $d$.
+\\
+\noindent \textbf{PROOF:}
+\end{boxedproposition}
+
+\textbf{Remarks on CNCES}
+Suppose nests in equation~(\ref{eqn:cnces:approx})
+corresponde to sectors $s = 1,2, \ldots, S$.
+\begin{itemize}
+    \item Productivity draws can be correlated $\rho_s \in[0,1)$ within sector.
+    \item Correlation can be different across sectors: $\rho_s \neq \rho_{s'}$.
+    \item Productivity draws are independent across sectors and, within sector, correlation is homogeneous across origins.
+\end{itemize}
+
+\subsubsection{Quantitative Application}
+\cite{Lind:2023} generalize the production technology in equation~(\ref{eqn:production_technology})
+to the following specification where 
+$Z_{sod}(v)$ --- the productivity for a good $v$ in country $o$ sector $s$ sold to $d$ ---
+is distributted according to 
+\begin{equation}
+    \text{Pr}\left[Z_{s o d}(v) \leq z_{s o}, \forall s, o\right] = 
+    \exp \left[-\sum_{k=1}^K\left(\sum_{s=1}^S \sum_{o=1}^N\left(T_{k s o d}^* z_{s o}^{-\theta}\right)^{\frac{1}{1-\rho_k}}\right)^{1-\rho_k}\right]
+\end{equation}
