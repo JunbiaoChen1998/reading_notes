@@ -1,14 +1,62 @@
-\subsection{Motivation}
+\subsubsection{Motivation}
 An insight from Ricardo (1817):
 Two countries gain more from trade when they have dissimilar production productivities.
-
-However, the models in the recent quatitative trade literature relies on independence assumptions,
+However, the models in the recent quatitative trade literature, building on EK (2002), relies on independence assumptions,
 which, although leading to convenient functional forms for estimation,
 restrict \textbf{expenditure substitution patterns} and 
 \textbf{impact inference on the gains from trade}.
 
-This paper proposes a cross-nested CES structure for productivity, 
+\subsubsection{Takeaway and Contribution}
+\paragraph{Takeaway}
+\begin{enumerate}
+    \item This paper proposes a cross-nested CES structure for productivity, 
 where the novelty comes from treating each nest as an unobserved—or, latent—dimension of the data.
-Particularly, this paper partitions sectors into multiple nests in a multisector Ricardian model,
-allowing rich cross-sector substition patterns in counterfactual analysis.
+% Particularly, this paper partitions sectors into multiple nests in a multisector Ricardian model,
+% allowing rich cross-sector substition patterns in counterfactual analysis.
+    \item This paper presents an alternative to the BLP procedure in \citep{Adao:2017}, but shares the same
+    goal of departing from IIA.
+\end{enumerate}
 
+\paragraph{Contribution}
+This paper generalizes the ACR's gains from trade to a GEV class.
+
+\subsubsection{A GEV Framework}
+\paragraph{Preferences}
+Consumers have identical CES preferences over continuum of goods, $v \in [0,1]$ 
+with elasticity of substitution $\eta > 1$.
+Thus, the expenditure share on $v$ is 
+\begin{equation}
+    X_d(v) = \left(\frac{P_d(v)}{P_d}\right)^{1-\eta} X_d,
+\end{equation}
+where the subscript $d$ denotes destination countries.
+$P_d(v) = \left(\int_0^1 P_d(v)^{1-\eta} dv \right)^{\frac{1}{1-\eta}}$
+is the price level, and $X_d$ is total expenditure in country $d$.
+
+\paragraph{Production}
+Each good $v$ is produced with a labor-only technology that features constant returns to scale:
+\begin{equation}
+    Y_{od}(v) = Z_{od}(v)L_{od}(v),
+\end{equation}
+where $Z_{od}(v)$ is a generalization of the standard iceberg trade costs assumption 
+that assumes $Z_{od} = \frac{Z_o(v)}{\tau_{od}}$.
+
+\paragraph{Max-Stable Multivariate Frechet Productivity}
+Given a destination country $d$,
+this paper assumes that the joint distribution of productivity across 
+origin countries is given by
+\begin{equation}
+    \text{Pr}\left[Z_{1 d}(v) \leq z_1, \ldots, Z_{N d}(v) \leq z_N\right]
+    =
+    \exp \left[-G^d\left(T_{1 d} z_1^{-\theta}, \ldots, T_{N d} z_N^{-\theta}\right)\right]    
+\end{equation}
+
+where $T_{o d}>0$ is the scale parameter and 
+$\theta>0$ the shape parameter characterizing the marginal Fr\'{e}chet distributions, 
+$\text{Pr}\left[Z_{o d}(v) \leq z\right]=e^{-T_{o d} z^{-\theta}}$. 
+The scale parameters capture the absolute advantage of countries, 
+while the shape parameter regulates the heterogeneity of iid productivity draws across the continuum of goods.%
+\footnote{
+    The smaller $\theta$ is, the greater the heterogeneity.
+}
+
+The function $G^d$ is a correlation function, also called tail dependence function in probability and statistics. This function allows for a flexible dependence
