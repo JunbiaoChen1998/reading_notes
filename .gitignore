@@ -8,3 +8,6 @@ logbook/logbook.log
 logbook/logbook.out
 logbook/logbook.toc
 .DS_Store
+replication_packages/Lind_Ramondo_AER_2023/LICENSE.txt
+replication_packages/Lind_Ramondo_AER_2023/data/*
+replication_packages/Lind_Ramondo_AER_2023/results/*

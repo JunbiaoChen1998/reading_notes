@@ -52,7 +52,7 @@ Each good $v$ is produced with a labor-only technology that features constant re
 where $Z_{od}(v)$ is a generalization of the standard iceberg trade costs assumption 
 that assumes $Z_{od} = \frac{Z_o(v)}{\tau_{od}}$.
 
-\paragraph{Max-Stable Multivariate Frechet Productivity}
+\paragraph{Max-Stable Multivariate Fr\'{e}chet Productivity}
 Given a destination country $d$,
 this paper assumes that the joint distribution of productivity across 
 origin countries is given by
@@ -99,35 +99,72 @@ $\theta$ alone governs the gains from trade in the EK model.
     Any correlation function can be approximated uniformly on compact sets using a cross-nested CES (CNCES) correlation function.
     \begin{equation}
         \label{eqn:cnces:approx}
-        G^d\left(x_1, \ldots, x_N\right)=\sum_{s=1}^S\left[\sum_{o=1}^N\left(\omega_{s o d} x_o\right)^{\frac{1}{1-\rho_s}}\right]^{1-\rho_s},
+        G^d\left(x_1, \ldots, x_N\right)=\sum_{k=1}^K\left[\sum_{o=1}^N\left(\omega_{k o d} x_o\right)^{\frac{1}{1-\rho_k}}\right]^{1-\rho_k},
     \end{equation}
-where $s = 1,2,\ldots,S$ is the nest index. 
-$\rho_s \in[0,1) \forall s$ is correlation coefficient that governs the correlation in productivity across origins within nest $s$. 
-For $\rho_s=0$, productivity is independent and the $s^{th}$ nest is additive. 
+where $k = 1,2,\ldots,K$ is the nest index. 
+$\rho_k \in[0,1) \forall k$ is correlation coefficient that governs the correlation in productivity across origins within nest $k$. 
+For $\rho_k=0$, productivity is independent and the $k^{th}$ nest is additive. 
 In contrast, as $\rho_k \rightarrow 1$,
-productivity becomes perfectly correlated within nest $s$, and the $s^{th}$ nest converges to a max function.
-$\omega_{s o d}>0$, and $\sum_s \omega_{s o d}=1$. 
-The weight $\omega_{s o d}$ indicates the relative importance of each nest $s$ for a given trading pair od. 
-If $\omega_{s o d}$ is high, nest $s$ is particularly productive in country $o$ for delivery to $d$.
+productivity becomes perfectly correlated within nest $s$, and the $k^{th}$ nest converges to a max function.
+$\omega_{k o d}>0$, and $\sum_k \omega_{k o d}=1$. 
+The weight $\omega_{k o d}$ indicates the relative importance of each nest $s$ for a given trading pair od. 
+If $\omega_{k o d}$ is high, nest $s$ is particularly productive in country $o$ for delivery to $d$.
 \\
 \noindent \textbf{PROOF:}
 \end{boxedproposition}
 
-\textbf{Remarks on CNCES}
-Suppose nests in equation~(\ref{eqn:cnces:approx})
-corresponde to sectors $s = 1,2, \ldots, S$.
+\textbf{Remarks on CNCES in equation~(\ref{eqn:cnces:approx})}
 \begin{itemize}
-    \item Productivity draws can be correlated $\rho_s \in[0,1)$ within sector.
-    \item Correlation can be different across sectors: $\rho_s \neq \rho_{s'}$.
-    \item Productivity draws are independent across sectors and, within sector, correlation is homogeneous across origins.
+    \item Productivity draws can be correlated within nest $k$: $\rho_k \in[0,1)$, and the correlation is homogeneous within nest.
+    \item Correlation can be different across nests: $\rho_k \neq \rho_{k'}$.
+    \item Productivity draws are \textbf{independent across nests}.
 \end{itemize}
 
 \subsubsection{Quantitative Application}
+\paragraph{Productivity}
 \cite{Lind:2023} generalize the production technology in equation~(\ref{eqn:production_technology})
 to the following specification where 
 $Z_{sod}(v)$ --- the productivity for a good $v$ in country $o$ sector $s$ sold to $d$ ---
 is distributted according to 
 \begin{equation}
     \text{Pr}\left[Z_{s o d}(v) \leq z_{s o}, \forall s, o\right] = 
-    \exp \left[-\sum_{k=1}^K\left(\sum_{s=1}^S \sum_{o=1}^N\left(T_{k s o d}^* z_{s o}^{-\theta}\right)^{\frac{1}{1-\rho_k}}\right)^{1-\rho_k}\right]
+    \exp \left[-\sum_{k=1}^K\left(\sum_{s=1}^S \sum_{o=1}^N\left(\omega_{ksod} T_{s o d} z_{s o}^{-\theta}\right)^{\frac{1}{1-\rho_k}}\right)^{1-\rho_k}\right],
 \end{equation}
+where $\omega_{ksod} > 0, \quad \sum_{k} \omega_{ksod} = 1$.
+Within nest $k$ (A.K.A. ``factor''), correlation is symmetric across origin countries and sectors.
+Productivity draws are independent across factors.
+
+\paragraph{Expenditure share}
+Assuming destination country $d$ sources goods by the lowest price,
+the sectoral share takes the following forms:
+\begin{equation}
+\label{eqn:fully_param_pi_sod}
+\begin{aligned}  
+    \pi_{sod} & = \sum_{k=1}^K \pi_{ksod}^* \\ 
+    & = \sum_{k=1}^K 
+    \underbrace{
+    \bigg[\frac{\left[T_{ksod}^* \left(t_{sod} W_o\right)^{-\theta}\right]^{\frac{1}{1-\rho_k}}}{\sum_{s'=1}^S \sum_{o'=1}^N\left[T_{ks'o'd}^* \left(t_{s'o'd} W_{o'}\right)^{-\theta}\right]^{\frac{1}{1-\rho_k}}} 
+    \bigg]
+    }_{\pi_{ksod}^W}
+    \times
+    \underbrace{
+    \bigg[\frac{\left\{\sum_{s'=1}^S \sum_{o'=1}^N\left[T_{ks'o'd}^* \left(t_{s' o' d} W_{o'}\right)^{-\theta}\right]^{\frac{1}{1-\rho_k}}\right\}^{1-\rho_k}}{\sum_{k'=1}^K\left\{\sum_{s'=1}^S \sum_{o'=1}^N\left[T_{k's'o'd}^* \left(t_{s'o'd} W_{o'}\right)^{-\theta}\right]^{\frac{1}{1-\rho_k}}\right\}^{1-\rho_{k'}}} \bigg]
+    }_{\pi_{kd}^B}
+\end{aligned}
+\end{equation}
+where $T_{ksod}^* \equiv \omega_{ksod}^* T_{sod}$.
+$W_o$ is nominal wage in country $o$.
+$\pi_{ksod}^W$ is destination $d$'s within-factor expenditure share across sectors and origins.
+
+\paragraph{Additional assumption}
+However, for the purpose of estimation, equation~(\ref{eqn:fully_param_pi_sod}) 
+is overparameterized because the productivity $T_{ksod}^*$ has four dimensions.
+To ensure that the model is not underidentified, 
+it is necessary to add some structure to the productivity distribution.
+Specifically, \cite{Lind:2023} impose a separability assumption as follows:
+\begin{equation}
+    T_{ksod}^* = \left( B_{sk} A_{kod} \right)^\theta,
+\end{equation}
+where $B_{sk}$ captures the usefulness of factor $k$ for sector $s$, while $A_{kod}$ 
+measures the productivity of origin $o$ in factor $k$ when delivering to destination $d$, 
+capturing barriers to apply technologies in a country as well as geographical barriers to trade (e.g., distance).
