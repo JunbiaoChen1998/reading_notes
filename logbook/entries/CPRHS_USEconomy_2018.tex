@@ -1,0 +1,45 @@
+\subsubsection{Model}
+\paragraph{Notation}
+\begin{itemize}
+    \item $J$: Number of sectors
+    \vspace{-2mm}
+    \item $N$: Number of locations
+\end{itemize}
+
+
+\subsubsection{Counterfactual Equilibrium in Relative Changes}
+
+Cost of input bundle ($J N$ equations):
+\begin{equation}
+\hat{x}_n^j=\left(\hat{\omega}_n\right)^{\gamma_n^j} \prod_{k=1}^J\left(\hat{P}_n^k\right)^{\gamma_n^{j k}}
+\end{equation}
+%
+Price index ($J N$ equations):
+\begin{equation}
+\hat{P}_n^j=\left(\sum_{i=1}^N \pi_{n i}^j\left[\hat{\kappa}_{n i}^j \hat{x}_i^j\right]^{-\theta^j} \hat{T}_i^{j \theta^j \gamma_i^j}\right)^{-1 / \theta^j}
+\end{equation}
+%
+Trade shares ($J N^2$ equations)
+\begin{equation}
+\pi_{n i}^{j^{\prime}}=\pi_{n i}^j\left(\frac{\hat{x}_i^j}{\hat{P}_n^j} \hat{\kappa}_{n i}^j\right)^{-\theta^j} \hat{T}_i^{j \theta^j \gamma_i^j}
+\end{equation}
+%
+Labor mobility condition ($N$ equations):
+\begin{equation}
+\hat{L}_n=\frac{\left(\frac{\hat{\omega}_n}{\varphi_n \hat{P}_n \hat{U}+\left(1-\varphi_n\right) \hat{b}_n}\right)^{1 / \beta_n}}{\sum_i L_i\left(\frac{\hat{\omega}_i}{\varphi_i \hat{P}_i \hat{U}+\left(1-\varphi_i\right) \hat{b}_i}\right)^{1 / \beta_i}} L
+\end{equation}
+%
+Regional market clearing in final goods ($J N$ equations):
+\begin{equation}
+X_n^{j \prime}=\sum_{k=1}^J \gamma_n^{k, j}\left(\sum_{i=1}^N \pi_{i n}^{k \prime} X_i^{k \prime}\right)+\alpha^j\left(\hat{\omega}_n\left(\hat{L}_n\right)^{1-\beta_n}\left(I_n L_n+\Upsilon_n+S_n\right)-S_n^{\prime}-\Upsilon_n^{\prime}\right)
+\end{equation}
+%
+Labor market clearing ($N$ equations)
+\begin{equation}
+\hat{\omega}_n\left(\hat{L}_n\right)^{1-\beta_n}\left(L_n I_n+\Upsilon_n+S_n\right)=\sum_j \gamma_n^j \sum_i \pi_{i n}^{\prime j} X_i^{\prime j}
+\end{equation}
+
+
+\subsubsection{Calibration}
+
+
