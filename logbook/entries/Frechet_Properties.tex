@@ -1,0 +1,21 @@
+\paragraph{Definition Fr\'{e}chet}. 
+A random variable, $Z$, has a Fr\'{e}chet distribution if there exists a scale parameter $T>0$ 
+and shape parameter $\theta>0$ such that $\mathbb{P}[Z \leq z]=e^{-T z^{-\theta}}$.
+
+
+Let $\Gamma(x) \equiv \int_0^{\infty} t^{x-1} e^{-t} \mathrm{~d} t$ denote the Gamma function.
+
+
+\paragraph{Expectation of Fr\'{e}chet}.  
+If $Z$ is Fr\'{e}chet with scale $T$ and shape $\theta>1$, then $\mathbb{E}[Z]=\Gamma(1-1 / \theta) T^{1 / \theta}$.
+\\
+Proof. $\mathbb{E}[Z]=\int_0^{\infty} z \theta T z^{-\theta-1} e^{-T z^{-\theta}} \mathrm{d} z=\int_0^{\infty} t^{-1 / \theta} e^{-t} \mathrm{~d} t T^{1 / \theta}=\Gamma(1-1 / \theta) T^{1 / \theta}$.
+
+
+\paragraph{Copula}.   
+A function $C:[0,1]^N \rightarrow[0,1]$ is a copula if there exists a random vector $\left(U_1, \ldots, U_N\right)$ on $[0,1]^N$ such that $C\left(u_1, \ldots, u_N\right)=\mathbb{P}\left[U_1 \leq u_1, \ldots, U_N \leq u_N\right]$ for each $\left(u_1, \ldots, u_N\right) \in[0,1]^N$.
+Given a random vector $\left(Z_1, \ldots, Z_N\right)$, its copula is
+$$
+C\left(u_1, \ldots, u_N\right) \equiv \mathbb{P}\left[F_1\left(Z_1\right) \leq u_1, \ldots, F_N\left(Z_N\right) \leq u_N\right]
+$$
+where $F_i(z) \equiv \mathbb{P}\left[Z_i \leq z\right]$ for each $i=1, \ldots, N$.

@@ -23,12 +23,14 @@ where $C_n^j$ denotes non-tradable final consumption goods.
     \begin{tikzpicture}[node distance=60mm, on grid]
         % Nodes arranged in a rectangular layout with light blue fill
         \node[draw, rectangle, fill=lightblue!50, minimum width=80mm, minimum height=15mm] (Q) 
-            {$Q_n^j = \left(\int y_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}} = C_n^j + \sum_{k=1}^J \int M_n^{j,k}(w^k)dw^k$};
+            {$Q_n^j = 
+            \underbrace{\left(\int y_n^j (w^j)^{\frac{\sigma_j-1}{\sigma_j}} d w^j \right)^{\frac{\sigma_j}{\sigma_j - 1}}}_{\text{Sourced from $i$ = 1,2,...,$N$. (``Regional Trade'')}} 
+            = C_n^j + \sum_{k=1}^J \int M_n^{j,k}(w^k)dw^k$};
         \node[draw, rectangle, fill=lightblue!30, minimum width=20mm, minimum height=10mm, above right=of Q, yshift=5mm] (C) 
             {$u(C_n^j) = \prod_{j=1}^J \left(C_n^j \right)^{\alpha_j}$}; % Adjusted position
         \node[draw, rectangle, fill=lightblue!30, minimum width=100mm, minimum height=10mm, below left=of Q, yshift=-10mm] (y) 
-            {$y_n^j(w^j) = z_n^j(w^j)\bigg[ l_n^j(w^j) \bigg]^{\gamma_n^j} \prod_{k=1}^J \bigg[ M_n^{k,j}(w^j) \bigg]^{\gamma_n^{k,j}}$};
-        
+            {$y_n^j(w^j) = z_n^j(w^j)\bigg[ l_n^j(w^j) \bigg]^{\gamma_n^j} \underbrace{\prod_{k=1}^J \bigg[ M_n^{k,j}(w^j) \bigg]^{\gamma_n^{k,j}}}_{\text{Sourced from $n$. (``Local Input-Output'')}}$};
+    
         % Edges to represent the roundabout process with adjusted curvature
         \draw[->, very thick, >=Latex, bend left=30] (Q) to 
             node[midway, left=1mm, align=center, text width=70mm] 
