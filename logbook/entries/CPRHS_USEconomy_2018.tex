@@ -49,7 +49,7 @@ Quantitative analysis on the effects of sectoral-regional shocks to the aggreagt
     \item \textbf{Data}: $\{I_n, L_n, \Upsilon_n, \pi_{ni}^j \}_{n=1, i =1, j=1}^{N, N, J}$.%
     \footnote{
         Recall that $I_n$ is income per capita for residents in $n$: $I_n = w_n + \underbrace{\frac{\sum_{i=1}^N \iota_i r_i H_i}{L}}_{\equiv \chi} + (1 - \iota_n) \frac{r_n H_n}{L_n}$.
-        $\Upsilon_n$ is regional national portfolio balances, such that 
+        $\Upsilon_n$ is trade surplus, such that 
         $I_n L_n + \chi L_n = w_n L_n + (1-\iota_n)r_n H_n + \underbrace{r_n \iota_n H_n}_{\Upsilon_n + \chi L_n}$
     }
     \vspace{-2mm}
@@ -63,11 +63,16 @@ Quantitative analysis on the effects of sectoral-regional shocks to the aggreagt
         \centering
         \begin{tabular}{c c} \toprule
             Baseline Shares/Parameters & Details \\ \hline
-            $I_{n}$ & $\frac{\text{total value added} + \text{interregional trade deficits}}{ \text{total population}}$  \\
-            $L_n$ & employment \\
+            $L_n$ (employment) & employment \\
+            $r_n H_n$ (the payment to structures and land)  & $\beta_n VA_n$ \\
+            $I_{n}$ (Income per capita) & $\frac{VA_n}{L_n} - \frac{\Upsilon_n}{L_n}$  \\
+            $\iota_n \in [0, 1]$ & $\text{argmin}_{\iota_n} (\Upsilon_n^{Data} - \Upsilon_n^{Model}(\iota))' (\Upsilon_n^{Data} - \Upsilon_n^{Model}(\iota))$ \\
+            $\theta_j$ (dispersion of productivities) & \cite{Caliendo:2015} \\
             \bottomrule
         \end{tabular}
-        \begin{minipage}{0.6\textwidth}{\footnotesize
-            \textsc{Notes}:}
+        \vspace{3mm}
+        \begin{minipage}{0.99\textwidth}{\footnotesize
+            \textsc{Notes}: $\Upsilon_n^{Model}(\iota)$ is a function of $\{ \iota_i \}_{i = 1}^N$:
+            $\Upsilon_n^{Model}(\iota) = \iota_n \times \underbrace{r_n H_n}_{\beta \times VA_n} - \frac{\sum_i \iota_i r_i H_i }{L} L_n$ }
         \end{minipage}
 \end{table}
