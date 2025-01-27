@@ -101,6 +101,57 @@ Given trade cost structure, the price of $\omega^j$ in $n$ is
     p_n^j(w^j) = \min_i \frac{\kappa_{ni}^j c_n^j}{z_i^j(w^j)}
 \end{equation}
 
+To deliver a gravity equation for intermediate goods producers, 
+this papaer follows EK (2002) to introduce a probablistic representation of technologies.
+In particular, 
+idisynractic productivities for intermediate goods producers are iid drawn from a Fr\'echet distribution with a location parameter $\lambda_n^j \geq 0$
+and a shape paramter $\theta^j$.
+Final goods producers source from the least cost supplier, therefore, the price of final goods $P_n^j$ is:
+\begin{equation}
+    P_n^j = A^j \bigg[\sum_{i}\lambda_i^j(c_i^j \kappa_{ni}^j)^{-\theta^j} \bigg]^{-\frac{1}{\theta^j}}
+\end{equation}
+
+
+
+
+Using the properties of the Fr\'{e}chet distribution, 
+we can derive expenditure shares as a function of technologies, prices, and trade costs
+\begin{equation}
+\label{eqn:CP_2015:gravity}
+\pi_{n i}^j=\frac{\lambda_i^j\left[c_i^j \kappa_{n i}^j\right]^{-\theta^j}
+    }{
+    \sum_{h=1}^N \lambda_h^j\left[c_h^j \kappa_{n h}^j\right]^{-\theta^j}
+    }
+\end{equation}
+
 
 \subsubsection{Calibration}
 \paragraph{Dispersion of productivities (or trade elasticities)}
+The trade elasticities $\theta^j$ are the key parameters for quantitative trade policy evaluation.
+In both the EK (2002) model and \cite{Caliendo:2015}, 
+the trade elasticities are related to the dispersion of productivities:
+If productivty is less dispersed (larger value of $\theta^j$),
+then a change in tariffs will not substantially change the trade flows.
+The reason is that goods are less substitutable.%
+\footnote{
+    Note that, in the Armington model, the trade elasticity is given by 
+    the elasticity of substitution.
+}
+
+Per equation~(\ref{eqn:CP_2015:gravity}),
+we can derive a multiplicative trade flows of sector $j$ for countries $i$, $h$, $n$:
+\begin{equation}
+\frac{X_{n i}^j X_{i h}^j X_{h n}^j}{X_{n h}^j X_{h i}^j X_{i n}^j} =
+\left(
+    \frac{
+        \kappa_{n i}^j}{\kappa_{i n}^j
+    } 
+    \frac{
+        \kappa_{i h}^j}{\kappa_{h i}^j
+    } 
+    \frac{
+        \kappa_{h n}^j}{\kappa_{n h}^j
+    }
+\right)^{-\theta^j}
+\end{equation}
+Note that the equation above only involves trade flows and trade costs.
